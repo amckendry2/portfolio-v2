@@ -41,7 +41,7 @@ const PageView = ({ category }) => {
 		const page = pagesData.pages[parseInt(idMatch.id)]
 		return (
 			<MainDiv>
-				<DescriptionText>{page.text}</DescriptionText>
+				<DescriptionText>{page.description}</DescriptionText>
 				<Gallery
 					images={page.images}
 					clickHandler={handleClick}

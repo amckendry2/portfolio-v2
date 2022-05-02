@@ -1,15 +1,22 @@
-const testPageData = require('./testPageData.json')
-
 const express = require('express')
-const app = express()
+const dbConnect = require('./utils/db')
+const Category = require('./models/Category')
+require('./models/Page')
 
+const app = express()
 app.use(express.json())
 
-app.get('/pages/:category', (req, res) => {
-	const category = req.params.category 
+dbConnect()
+
+app.get('/pages/:category', async (req, res) => {
+	const categoryName = req.params.category 
+  const categoryData = await 
+    Category
+      .findOne({name: categoryName})
+      .populate('pages')
 	return res
 		.status(200)
-		.json(testPageData.find(o => o.category === category))
+		.json(categoryData)
 })
 
 module.exports = app

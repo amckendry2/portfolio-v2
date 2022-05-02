@@ -7,7 +7,6 @@ import ModalView from './Modal/ModalView'
 import PageView from './PageView'
 import { Header, HeaderDiv, MainDiv } from './styles'
 
-
 const App = () => {
 	
 	const modalState = useContext(ModalContext)
