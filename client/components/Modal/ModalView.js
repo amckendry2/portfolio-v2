@@ -13,11 +13,11 @@ const ModalView = ({ show, imgUrl, handleClick }) => {
 
 	return (
 		<ModalBackground style={props}>
-		<ModalDiv 
-			onClick={handleClick}
-			src={imgUrl}
-		>
-		</ModalDiv>
+      <ModalDiv
+        onClick={handleClick}
+        src={imgUrl}
+      >
+      </ModalDiv>
 		</ModalBackground>
 	)
 

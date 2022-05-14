@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ModalContext } from '../../state/ModalProvider'
-import pageService from '../../services/pages'
+import categoryService from '../../services/category'
 
 import Gallery from './Gallery'
 import { DescriptionText, PlaceholderDiv, MainDiv } from './styles'
@@ -18,11 +18,11 @@ const PageView = ({ category }) => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await pageService.getPage(category)
+			const data = await categoryService.getCategory(category)
 			setPageData(data)
 		}
 		fetchData()
-	}, [pageService])
+	}, [categoryService])
 
 
 	const handleClick = ({ id, url }) => {
@@ -41,6 +41,7 @@ const PageView = ({ category }) => {
 		const page = pagesData.pages[parseInt(idMatch.id)]
 		return (
 			<MainDiv>
+        <div style={{textAlign: 'center'}}><h2>Page Name</h2></div>
 				<DescriptionText>{page.description}</DescriptionText>
 				<Gallery
 					images={page.images}

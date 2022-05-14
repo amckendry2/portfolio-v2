@@ -9,7 +9,6 @@ module.exports = (env, argv) => {
 
 	return {
 		mode,
-
 		entry: [
 			'./client',
 			isDev && `webpack-hot-middleware/client?http://localhost:${port}`
@@ -34,7 +33,11 @@ module.exports = (env, argv) => {
 							].filter(Boolean)
 						}
 					}
-				}
+				},
+        {
+          test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+          use: ['file-loader'],
+        }
 			]
 		},
 

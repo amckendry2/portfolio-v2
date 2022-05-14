@@ -5,6 +5,7 @@ import { useTransition, animated } from '@react-spring/web'
 
 import ModalView from './Modal/ModalView'
 import PageView from './PageView'
+import Admin from './Admin'
 import { Header, HeaderDiv, MainDiv } from './styles'
 
 const App = () => {
@@ -34,7 +35,12 @@ const App = () => {
 
 	const handleModalClick = () => modalState.closeModal()
 
+  //NEED TO SEPARATE THE GALLERY VIEWS WITH TRANSITIONS TO SUBCOMPONENT
+
 	return (
+    location.pathname === '/admin' ? 
+    <Admin/>
+    :
 		<>
 			<ModalView 
 				show={modalState.showModal} 
@@ -50,9 +56,12 @@ const App = () => {
 				</div>
 			</HeaderDiv>
 			<MainDiv>
-			{transitions((props, item) => (
+      <Routes>
+        <Route path='admin' element={<Admin/>}/>
+      </Routes>
+			{transitions((props, itemLocation) => (
 				<animated.div style={props}>
-					<Routes location={item}>
+					<Routes location={itemLocation}>
 						{routes}
 					</Routes>
 				</animated.div>
