@@ -8,7 +8,7 @@ const Gallery = ({ images, clickHandler }) => {
 	const imageDisplay = images.map((img, i) => 
 		<GalleryImage 
 			key={i} 
-			src={img} 
+			src={img.url} 
 			clickHandler={() => clickHandler({id: i, url: img})}
 			height={200}
 			width={300}

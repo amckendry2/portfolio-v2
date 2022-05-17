@@ -1,29 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ModalContext } from '../../state/ModalProvider'
-import categoryService from '../../services/category'
 
 import Gallery from './Gallery'
 import { DescriptionText, PlaceholderDiv, MainDiv } from './styles'
 
 
-const PageView = ({ category }) => {
+const PageView = ({ pagesData }) => {
 
 	const modalState = useContext(ModalContext)
 	const navigate = useNavigate()
-	const [pagesData, setPageData] = useState(null)
 	const idMatch = useParams()
 
 	const inSubView = idMatch.id !== undefined
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const data = await categoryService.getCategory(category)
-			setPageData(data)
-		}
-		fetchData()
-	}, [categoryService])
-
 
 	const handleClick = ({ id, url }) => {
 		if(!inSubView){
@@ -33,7 +22,7 @@ const PageView = ({ category }) => {
 		}
 	}
 
-	if (!pagesData) {
+	if (pagesData.length === 0) {
 		return <PlaceholderDiv></PlaceholderDiv> 
 	}
 
