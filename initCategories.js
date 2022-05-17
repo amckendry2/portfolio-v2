@@ -1,21 +1,23 @@
 const Category = require('./server/models/Category')
-const Page = require('./server/models/Page')
 const dbConnect = require('./server/utils/db')
 
 const main = async() => {
   await dbConnect()
   console.log('connected')
-  const pages = await Page.find({})
-  const pageIds = pages.map(p => p.id)
+  await Category.deleteMany();
   const illustration = new Category({
     name: 'illustration',
-    pages: pageIds
+    pages: [],
+    sortNum: 1
   })
   await illustration.save()
   const design = new Category({
     name: 'design',
-    pages: pageIds
+    pages: [],
+    sortNum: 0 
   })
   await design.save()
   console.log('done')
 }
+
+main();

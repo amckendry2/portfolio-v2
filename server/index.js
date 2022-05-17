@@ -11,7 +11,10 @@ app.use(express.json())
 dbConnect()
 
 app.get('/category', async (req, res) => {
-  const categoryData = await Category.find({}).populate('pages')
+  const categoryData = await Category
+    .find({})
+    .populate('pages')
+    .sort('sortNum')
   return res.status(200).json(categoryData)
 })
 

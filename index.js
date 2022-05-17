@@ -7,7 +7,7 @@ const { PORT, inProduction } = require('./config/globals')
 
 const app = express()
 
-app.get('/', (req, res) => res.redirect('/illustration'))
+// app.get('/', (req, res) => res.redirect('/illustration'))
 app.use('/api', (req, res, next) => require('./server')(req, res, next))
 
 const watcher = chokidar.watch('server')

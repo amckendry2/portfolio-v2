@@ -5,7 +5,8 @@ const categorySchema = new mongoose.Schema({
   pages: [{
     type: mongoose.Types.ObjectId,
     ref: 'Page'
-  }]
+  }],
+  sortNum: Number
 })
 
 const Category = mongoose.model('Category', categorySchema)

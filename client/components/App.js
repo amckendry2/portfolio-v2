@@ -49,7 +49,7 @@ const App = () => {
 			/>
 			<HeaderDiv>
 				<div onClick={handleModalClick}>
-					<h1 style={{margin: 0}}>RACHEL KROHN</h1>
+					<h1 style={{margin: 0}}>PORTFOLIO</h1>
 					<Header>
 						{links}
 					</Header>
